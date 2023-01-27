@@ -5,7 +5,7 @@ program that takes an image path and generates some ascii art:
 
 Image:
 
-![image](/Users/yuvaltimen/Coding/ascii_art/emoji.png)
+![image](https://github.com/yuvaltimen/ascii/blob/master/emoji.png?raw=true)
 
 Art:
 ```
