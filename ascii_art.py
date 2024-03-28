@@ -41,11 +41,15 @@ def map_pixels_to_ascii(img: np.array) -> np.array:
 
 
 def do_downsample(img: np.array) -> np.array:
-    downsampled_img = block_reduce(img, block_size=(13, 5, 1), func=np.max)
-    print(img.shape)
-    print(downsampled_img.shape)
+    downsampled_img_1 = block_reduce(img, block_size=(5, 2, 1), func=np.max)
+    downsampled_img_2 = block_reduce(downsampled_img_1, block_size=(2, 2, 1), func=np.mean)
 
-    return downsampled_img
+
+    print(img.shape)
+    print(downsampled_img_1.shape)
+    print(downsampled_img_2.shape)
+
+    return downsampled_img_2
 
 
 def dist(p: tuple, q: tuple) -> float:
@@ -61,7 +65,7 @@ def load_cmap(path: str) -> np.array:
 
 
 def image_to_ascii_alpha(img: np.array, alphas: np.array) -> str:
-    cmap = load_cmap("/Users/yuvaltimen/Coding/ascii-art/ascii/cmap2d.txt")
+    cmap = load_cmap("/Users/yuvaltimen/Coding/ascii-art/ascii/cmap.txt")
 
     out = ""
 
@@ -114,7 +118,7 @@ def image_to_ascii(img: np.array) -> str:
 
 def validate_args(inputs: dict) -> None:
     print("validating: " + str(inputs))
-    return inputs['path'], inputs['']
+
 
 
 if __name__ == "__main__":
