@@ -41,12 +41,13 @@ def map_pixels_to_ascii(img: np.array) -> np.array:
 
 
 def do_downsample(img: np.array) -> np.array:
-    downsampled_img_1 = block_reduce(img, block_size=(5, 2, 1), func=np.max)
-    downsampled_img_2 = block_reduce(downsampled_img_1, block_size=(2, 2, 1), func=np.mean)
-
-
+    
     print(img.shape)
+    
+    downsampled_img_1 = block_reduce(img, block_size=(5, 2, 1), func=np.max)
     print(downsampled_img_1.shape)
+    
+    downsampled_img_2 = block_reduce(downsampled_img_1, block_size=(2, 2, 1), func=np.mean)
     print(downsampled_img_2.shape)
 
     return downsampled_img_2
@@ -121,6 +122,7 @@ def validate_args(inputs: dict) -> None:
 
 
 
+
 if __name__ == "__main__":
     description = """
     Usage:
@@ -139,10 +141,10 @@ if __name__ == "__main__":
     parser.add_argument('-a', '--alpha', action='store_true')
     parser.add_argument('-s', '--size', dest='size', action='store')
 
-    args = parser.parse_args()
+    args = vars(parser.parse_args())
 
     validate_args(args)
 
-    img_path = "/Users/yuvaltimen/Coding/ascii-art/ascii/lego.png"
+    img_path = args['path']  # "/Users/yuvaltimen/Coding/ascii-art/ascii/lego.png"
     output_img_size = (30, 30)
-    main(img_path, True)
+    main(img_path)
