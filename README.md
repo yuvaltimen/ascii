@@ -1,7 +1,15 @@
 # ascii-art
 
-program that takes an image path and generates some ascii art:
-
+program that takes an image path and generates some ascii art
+Usage:
+        asciify [-a | --alpha] [-s | --size <height,width>] path
+    
+    Options:
+        -a | --alpha: flag to use alpha values if they exist
+        -s | --size: comma-separated integers for output image size (height,width)
+    
+    Arguments:
+        path: absolute path to the image file, supports *.png and *.jpeg
 
 Image:
 
