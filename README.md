@@ -1,3 +1,4 @@
+
 # ascii-art
 
 program that takes an image path and generates some ascii art
